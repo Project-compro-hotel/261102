@@ -67,14 +67,41 @@ void booking(roomtype &room,guestinfo &info,vector<guestinfo> &roomstatus){ //�
     cout << "---------------------------------";
     cout << "\nBooking your rooms";
     cout << "\n---------------------------------";
-    cout << "\nPlease in put a check-in date (dd/mm/yyyy)  : "; //รับวันเช็คอิน
-    cin >> info.checkindate;
-    sscanf(info.checkindate.c_str(),"%d/%d/%d",&date[0],&month[0],&year);
-    cout << "Please in put a check-out date (dd/mm/yyyy) : "; //รับวันเช็คเอาท์
-    cin >> info.checkoutdate;
-    sscanf(info.checkoutdate.c_str(),"%d/%d/%d",&date[1],&month[1],&year);
-    Numofday = date[1]-date[0];
-    cout << "---------------------------------";
+    do{
+        cout << "\nPlease in put a check-in  date (dd/mm/yyyy) : "; //รับวันเช็คอิน
+        cin >> info.checkindate;
+        sscanf(info.checkindate.c_str(),"%d/%d/%d",&date[0],&month[0],&year);
+        cout << "Please in put a check-out date (dd/mm/yyyy) : "; //รับวันเช็คเอาท์
+        cin >> info.checkoutdate;
+        sscanf(info.checkoutdate.c_str(),"%d/%d/%d",&date[1],&month[1],&year);
+        cout << "---------------------------------";
+    }while(date[1]<date[0]&&month[1]<=month[0]);
+    //อัปเดตการคิดจำนวนวัน
+    switch(month[0]){
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            Numofday = ((month[1]-month[0])*31)-date[0]+date[1]+1;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            Numofday = ((month[1]-month[0])*30)-date[0]+date[1]+1;
+            break;
+        case 2:
+            if(year%4==0){
+                Numofday = ((month[1]-month[0])*29)-date[0]+date[1]+1;
+                break;
+            } else{
+                Numofday = ((month[1]-month[0])*28)-date[0]+date[1]+1;
+                break;
+            }
+    }
     cout << "\nNumber of room : "; //เช็คจำนวนห้องที่จะจอง
     cin >> roomNO;
     for(int i=0;i<roomNO;i++) {
