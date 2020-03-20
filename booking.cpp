@@ -268,5 +268,28 @@ int main() {
         }
     }
 
+    
+}
+void gustinfo::show(){
+cout<<"\n\n\n\n-------------------------------------------------------------\n";
+    cout<<"\t\t\t***GUEST INFORMATION***\n"; 
+    cout<<"-------------------------------------------------------------\n";
 
+    cout<<"\nNAME :  "<<info.name <<"\t\t\tBooking Number : "<<bookingNum;
+
+    cout<<"\n\nEmail : "<<info.email<<"\t\t\tTel : "<<info.phonenumber;
+    
+    cout<<"Number of room : "<<roomNo<<"   [ ";
+    for(int i=0; i<roomNo ; i++) {cout<<slroom[i]<<" ";} 
+    cout<<"]";  
+    cout<<"NUMBER DAY : "<<Numofday ;
+    cout<<"\t\tTOTAL PRICE : "<<totalprice <<" ฿\n";
+    
+    
+    
+    cout<<"\t\tCLEANING STATUS : ";
+        int Clean= rand()%2;
+            if(Clean<=0) cout<<"YES\n";
+            else{cout<<"NO\n";}
+    cout<<"-------------------------------------------------------------\n";
 }
