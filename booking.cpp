@@ -212,12 +212,8 @@ void booking(roomtype &room,guestinfo &info,vector<guestinfo> &roomstatus){ //�
     }
 }
 
-int main() {
-    srand(time(0));
-    int date[32][13],year[100],para1=1,para2=1;
-    roomtype room;
-    guestinfo info;
-    vector<guestinfo> roomstatus;
+void roomsetup(roomtype &room){
+    int para1=1,para2=1;
     //ตั้งค่าชนิดของห้องและราคาห้องทั้งสามชนิด
     room.type[0]="Standard"; room.price[0]=1000;
     room.type[1]="Twin bed"; room.price[1]=1500;
@@ -243,6 +239,14 @@ int main() {
         para1=1;
         para2=1;
     }
+}
+
+int main() {
+    srand(time(0));
+    roomtype room;
+    guestinfo info;
+    vector<guestinfo> roomstatus;
+    roomsetup(room);
     //ตัวเริ่มโปรแกรม
     if(checkuser()==1){ //ถ้าcheckuser == 1 จะเข้าสู่เมนูของลูกค้า
         if(guestpart()==1){
